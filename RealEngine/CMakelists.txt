@@ -1,6 +1,7 @@
 #D:\Projects\RealEngine\RealEngine
+
 cmake_minimum_required(VERSION 3.14)
-# RealEngine as shared library
+
 file(GLOB_RECURSE REALENGINE_SRC CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"
@@ -13,6 +14,6 @@ target_include_directories(RealEngine PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor
 )
 
-#target_compile_definitions(RealEngine PRIVATE REALENGINE_EXPORTS)
-# Optionally add third-party dependencies here
+target_compile_definitions(RealEngine PUBLIC REAL_BUILD_DLL)
+# third-party dependencies here
 # target_link_libraries(RealEngine ...)

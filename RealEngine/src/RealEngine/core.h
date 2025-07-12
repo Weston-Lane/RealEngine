@@ -1,5 +1,6 @@
 #pragma once
+#include "platform/PlatformMacros.h"
 namespace Real
 {
-	__declspec(dllexport) void Print();
+	REAL_EXPORT void Print();
 }
