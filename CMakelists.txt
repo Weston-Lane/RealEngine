@@ -1,18 +1,20 @@
-#D:\Projects\RealEngine\RealEngine
-cmake_minimum_required(VERSION 3.14)
-# RealEngine as shared library
-file(GLOB_RECURSE REALENGINE_SRC CONFIGURE_DEPENDS
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"
-)
+#D:\Projects\RealEngine
+cmake_minimum_required(VERSION 3.20)
+project(RealEngine)
 
-add_library(RealEngine SHARED ${REALENGINE_SRC})
+set(CMAKE_CXX_STANDARD 23)
 
-target_include_directories(RealEngine PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${CMAKE_CURRENT_SOURCE_DIR}/vendor
-)
+# Output Directory
+set(BIN_DIR "${CMAKE_SOURCE_DIR}/GameLayer/bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR})
 
-#target_compile_definitions(RealEngine PRIVATE REALENGINE_EXPORTS)
-# Optionally add third-party dependencies here
-# target_link_libraries(RealEngine ...)
+# Add subdirectories
+add_subdirectory(RealEngine)
+add_subdirectory(GameLayer)
+
+
+
+
+
