@@ -13,8 +13,3 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR})
 # Add subdirectories
 add_subdirectory(RealEngine)
 add_subdirectory(GameLayer)
-
-
-
-
-

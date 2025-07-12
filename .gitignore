@@ -1,5 +1,23 @@
-build/
+
+Default_CMakeBuildFiles/
 bin/
 release/
 .vs/
 
+
+/VS_CMakeBuildFiles/ALL_BUILD.vcxproj
+/VS_CMakeBuildFiles/ALL_BUILD.vcxproj.filters
+/VS_CMakeBuildFiles/ALL_BUILD.vcxproj.user
+/VS_CMakeBuildFiles/CMakeCache.txt
+/VS_CMakeBuildFiles/cmake_install.cmake
+/VS_CMakeBuildFiles/ZERO_CHECK.vcxproj
+/VS_CMakeBuildFiles/ZERO_CHECK.vcxproj.filters
+/VS_CMakeBuildFiles/ZERO_CHECK.vcxproj.user
+/VS_CMakeBuildFiles/CMakeFiles/
+/VS_CMakeBuildFiles/GameLayer/
+/VS_CMakeBuildFiles/RealEngine/
+/VS_CMakeBuildFiles/x64/
+/VS_CMakeBuildFiles/ZERO_CHECK.vcxproj
+/VS_CMakeBuildFiles/ZERO_CHECK.vcxproj.filters
+/VS_CMakeBuildFiles/ALL_BUILD.vcxproj
+/VS_CMakeBuildFiles/ALL_BUILD.vcxproj.filters
