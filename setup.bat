@@ -2,7 +2,7 @@
 set "buildPath=.\VS_CMakeBuildFiles"
 if exist "%buildPath%\" (
     echo Opening VS solution...
-    cd build
+    cd VS_CMakeBuildFiles
     RealEngine.sln
     cd ../
 ) else (
