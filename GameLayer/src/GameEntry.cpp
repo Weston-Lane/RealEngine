@@ -17,7 +17,7 @@ public:
 private:
 };
 
-//Function declared in EntryPoint and defined here 
+//Function declared in App class and defined here 
 Real::RealApp* Real::CreateApp()
 {
 	RL_CORE_FATAL("{}",1);

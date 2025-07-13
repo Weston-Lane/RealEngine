@@ -73,7 +73,7 @@ namespace Real
                     FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY | BACKGROUND_INTENSITY//TRACE 
                 };
                 SetConsoleTextAttribute(cHandle, color[level]);
-                std::print("Core "); std::print("{}", levelStrings[level]);
+                std::print("REAL Core "); std::print("{}", levelStrings[level]);
             }
             else//same colors but with no background
             {

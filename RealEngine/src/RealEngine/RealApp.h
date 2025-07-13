@@ -11,6 +11,6 @@ namespace Real
 	private:
 	};
 
-	//Defined in application
+	//Defined in user application
 	RealApp* CreateApp();
 }
