@@ -1,15 +1,19 @@
 #D:\Projects\RealEngine\GameLayer
+
 cmake_minimum_required(VERSION 3.14)
-file(GLOB_RECURSE GAMELAYER_SRC CONFIGURE_DEPENDS
+file(
+    GLOB_RECURSE GAMELAYER_SRC CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"
 )
 
 add_executable(Application ${GAMELAYER_SRC})
 
-target_include_directories(Application PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${CMAKE_CURRENT_SOURCE_DIR}../RealEngine/src/RealEngine.h
+target_include_directories(
+    Application 
+        PRIVATE
+            ${CMAKE_CURRENT_SOURCE_DIR}/src
+            ${CMAKE_CURRENT_SOURCE_DIR}../RealEngine/src/RealEngine.h
 )
 
 target_link_libraries(Application PRIVATE RealEngine)

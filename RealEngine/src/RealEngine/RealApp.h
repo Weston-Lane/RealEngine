@@ -1,5 +1,5 @@
 #pragma once
-#include "platform/PlatformMacros.h"
+#include <platform/PlatformMacros.h>
 namespace Real
 {
 	class REAL_EXPORT RealApp

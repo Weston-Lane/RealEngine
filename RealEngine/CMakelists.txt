@@ -2,18 +2,49 @@
 
 cmake_minimum_required(VERSION 3.14)
 
-file(GLOB_RECURSE REALENGINE_SRC CONFIGURE_DEPENDS
+file(
+    GLOB_RECURSE REALENGINE_SRC CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"
 )
 
-add_library(RealEngine SHARED ${REALENGINE_SRC})
+add_library(
+    RealEngine 
+        SHARED 
+            ${REALENGINE_SRC})
 
-target_include_directories(RealEngine PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${CMAKE_CURRENT_SOURCE_DIR}/vendor
+target_include_directories(
+    RealEngine 
+        PUBLIC
+            ${CMAKE_CURRENT_SOURCE_DIR}/src
+            ${CMAKE_CURRENT_SOURCE_DIR}/vendor
+)
+#include all needed std header files for engine PCH compilation
+if(WIN32)
+    target_precompile_headers(
+        RealEngine
+            PUBLIC 
+                <vector>
+                <print>
+                <string>
+                <format>
+                <chrono>
+                <unordered_map>
+                <unordered_set>
+                <windows.h>
+                <algorithm>
+                <functional>
+    )
+else()
+    message(Cmake configured only for windows currently...)
+endif()
+
+
+target_compile_definitions(
+    RealEngine 
+        PUBLIC 
+            REAL_BUILD_DLL
 )
 
-target_compile_definitions(RealEngine PUBLIC REAL_BUILD_DLL)
 # third-party dependencies here
 # target_link_libraries(RealEngine ...)

@@ -1,4 +1,3 @@
-#include <print>
 #include <RealEngine.h>
 
 //inherits from RealApp for engine functions 
@@ -31,8 +30,7 @@ Real::RealApp* Real::CreateApp()
 	RL_CORE_DEBUG("{}", 1);
 	RL_DEBUG("{}", 1);
 	RL_CORE_TRACE("{}", 1);
-	RL_TRACE("{}", 1);
+	RL_TRACE("{}", 2);
 	
-
 	return new GameEntry();
 }

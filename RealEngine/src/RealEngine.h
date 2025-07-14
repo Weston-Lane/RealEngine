@@ -1,12 +1,13 @@
-//Core header includes//
+/*Engine Header Includes*/
 
-//-----std headers----//
-#include <print>
-//-------------------//
+//------------std headers-------------//
+	/* included in Cmake
+	 * with precompiled header */
+//---------Engine Utilities-----------//
+#include "platform/PlatformMacros.h"
+#include "RealEngine/Logger.h"
 #include "RealEngine/Core.h"
 #include "RealEngine/RealApp.h"
-#include "RealEngine/Logger.h"
-//--------EntryPoint----------//
+//------------EntryPoint------------//
 #include "RealEngine/EntryPoint.h"
-//---------------------------//
-#include "platform/PlatformMacros.h"
+//---------------------------------//

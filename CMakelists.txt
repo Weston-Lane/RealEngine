@@ -1,19 +1,25 @@
 #D:\Projects\RealEngine
 cmake_minimum_required(VERSION 3.20)
-project(RealEngine)
 
+project(RealEngine)
 set(CMAKE_CXX_STANDARD 23)
 
+#statically links the cpp runtimelib to RealEngine.dll
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded") 
+
 # Output Directory
-set(BIN_DIR "${CMAKE_SOURCE_DIR}/GameLayer/bin")
+set(BIN_DIR "${CMAKE_SOURCE_DIR}/GameLayer/bin/$<CONFIG>")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR})
 
-# Add subdirectories
 add_subdirectory(RealEngine)
 add_subdirectory(GameLayer)
 
 if(WIN32)
-    target_compile_definitions(RealEngine PUBLIC REAL_PLATFORM_WINDOWS)
+    target_compile_definitions(
+        RealEngine 
+            PUBLIC 
+                REAL_PLATFORM_WINDOWS
+    )
 endif()

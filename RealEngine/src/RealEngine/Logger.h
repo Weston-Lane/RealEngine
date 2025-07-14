@@ -1,7 +1,7 @@
 #pragma once
-#include <windows.h>
-#include <string>
-#include <chrono>
+//////------------intellisense is being moody so I need this include even though its already precompiled--------------------//
+#include <format>
+//////---------------------------------------------------------------------------------------------------------------------//
 
 /* Disable and enable log levels via cmake compile definitions
 * This macro based feature toggle is useful since all of the stray Debug 
