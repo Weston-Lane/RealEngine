@@ -2,6 +2,8 @@
 
 cmake_minimum_required(VERSION 3.14)
 
+
+
 file(
     GLOB_RECURSE REALENGINE_SRC CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
@@ -13,11 +15,12 @@ add_library(
         SHARED 
             ${REALENGINE_SRC})
 
+
 target_include_directories(
     RealEngine 
         PUBLIC
             ${CMAKE_CURRENT_SOURCE_DIR}/src
-            ${CMAKE_CURRENT_SOURCE_DIR}/vendor
+            ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLFW/include
 )
 #include all needed std header files for engine PCH compilation
 if(WIN32)
@@ -26,6 +29,7 @@ if(WIN32)
             PUBLIC 
                 "src/pch.h"
     )
+    target_link_libraries(RealEngine PRIVATE opengl32)
 else()
     message(Cmake configured only for windows currently...)
 endif()
@@ -37,5 +41,11 @@ target_compile_definitions(
             REAL_BUILD_DLL
 )
 
+
 # third-party dependencies here
-# target_link_libraries(RealEngine ...)
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLFW)
+target_link_libraries(RealEngine PRIVATE glfw)
