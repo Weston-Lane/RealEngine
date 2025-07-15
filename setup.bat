@@ -8,5 +8,8 @@ if exist "%buildPath%\" (
 ) else (
     echo Creating build folder...
     cmake -S . -B VS_CMakeBuildFiles
+    cd VS_CMakeBuildFiles
+    RealEngine.sln
+    cd ../
 )
 

@@ -24,16 +24,7 @@ if(WIN32)
     target_precompile_headers(
         RealEngine
             PUBLIC 
-                <vector>
-                <print>
-                <string>
-                <format>
-                <chrono>
-                <unordered_map>
-                <unordered_set>
-                <windows.h>
-                <algorithm>
-                <functional>
+                "src/pch.h"
     )
 else()
     message(Cmake configured only for windows currently...)

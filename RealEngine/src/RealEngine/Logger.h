@@ -1,7 +1,5 @@
 #pragma once
-//////------------intellisense is being moody so I need this include even though its already precompiled--------------------//
-#include <format>
-//////---------------------------------------------------------------------------------------------------------------------//
+#include "pch.h"
 
 /* Disable and enable log levels via cmake compile definitions
 * This macro based feature toggle is useful since all of the stray Debug 
