@@ -19,7 +19,7 @@ namespace Real
 	{
 		while (m_isRunning)
 		{
-			glClearColor(.5, .5, .5, 1);
+			glClearColor(.6, .5, .5, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 			
 			m_window->OnUpdate();

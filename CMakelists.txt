@@ -5,8 +5,8 @@ project(RealEngine)
 set(CMAKE_CXX_STANDARD 23)
 
 #statically links the cpp runtimelib to RealEngine.dll
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded") 
-
+#need the DLL so the application and engine do not use different heaps. Need to move the runtime lib to the exe folder.
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDLL") 
 # Output Directory
 set(BIN_DIR "${CMAKE_SOURCE_DIR}/GameLayer/bin/$<CONFIG>")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})

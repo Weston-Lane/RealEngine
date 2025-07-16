@@ -19,5 +19,6 @@ private:
 //Function declared in App class and defined here 
 Real::RealApp* Real::CreateApp()
 {	
+	
 	return new GameEntry();
 }
