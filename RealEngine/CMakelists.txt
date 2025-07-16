@@ -19,6 +19,7 @@ target_include_directories(
         PUBLIC
             ${CMAKE_CURRENT_SOURCE_DIR}/src
             ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLFW/include
+            ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLAD/include
 )
 #include all needed std header files for engine PCH compilation
 if(WIN32)
@@ -41,10 +42,24 @@ target_compile_definitions(
 )
 
 
-# third-party dependencies here
+#######################################################third-party dependencies here#########################################################
+#GLFW
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLFW)
+set_target_properties(glfw PROPERTIES FOLDER "Vendor/GLFW")
+set_target_properties(update_mappings PROPERTIES FOLDER "Vendor/GLFW")
 target_link_libraries(RealEngine PRIVATE glfw)
+
+
+#GLAD
+add_library(glad STATIC ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLAD/src/glad.c)
+target_include_directories(
+    glad    
+        PUBLIC
+            ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLAD/include
+)
+set_target_properties(glad PROPERTIES FOLDER "Vendor/GLAD")
+target_link_libraries(RealEngine PRIVATE glad)
