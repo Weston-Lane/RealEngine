@@ -1,7 +1,10 @@
 #include "pch.h"
 #include "RealApp.h"
 #include "Logger.h"
-#include "GLFW/glfw3.h"
+
+/// <summary>
+/// Layer updates happen here
+/// </summary>
 namespace Real
 {
 #define EVENT_FUNC_BIND(func,type) [&](Event& event) { return func(static_cast<type&>(event)); }//std::bind(&RealApp::OnEvent, this, std::placeholders::_1);
@@ -19,22 +22,46 @@ namespace Real
 	{
 		while (m_isRunning)
 		{
-			glClearColor(.6, .5, .5, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
-			
+			//UPDATES
 			m_window->OnUpdate();
+			for (Layer* layer : m_layerStack.GetLayerStack())
+				{ layer->OnUpdate(); }
 		}
 	}
 	void RealApp::OnEvent(Event& event)
 	{
 		EventDispatcher dispatcher(event);
 		dispatcher.Dispatch<WindowCloseEvent>(EVENT_FUNC_BIND(OnWindowClose,WindowCloseEvent));
-		RL_CORE_TRACE("{}",event.ToString());
+
+		//PROPOGATING EVENTS INTO THE EVENT LAYERS
+		for (auto it = m_layerStack.End() - 1; it != m_layerStack.Begin()-1; --it)//must use -1 at pointers to ensure visitation of all layers
+		{
+			(*it)->OnEvent(event);
+			if(event.m_eventHandled)
+				{ break; }
+		}
 	}
 	bool RealApp::OnWindowClose(WindowCloseEvent& e)
 	{
 		m_isRunning = false;
 		return true;
+	}
+
+	void RealApp::PushLayer(Layer* layer)
+	{
+		m_layerStack.PushLayer(layer);
+	}
+	void RealApp::PopLayer(Layer* layer)
+	{
+		m_layerStack.PopLayer(layer);
+	}
+	void RealApp::PushOverlayLayer(Layer* layer)
+	{
+		m_layerStack.PopOverlayLayer(layer);
+	}
+	void RealApp::PopOverlayLayer(Layer* layer)
+	{
+		m_layerStack.PopOverlayLayer(layer);
 	}
 
 }

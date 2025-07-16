@@ -140,7 +140,8 @@ namespace Real
 	}
 	void WinWindow::OnUpdate()
 	{
-
+		glClearColor(1, 1, 1, 1);
+		glClear(GL_COLOR_BUFFER_BIT);
 		glfwPollEvents();
 		glfwSwapBuffers(m_window);
 		
