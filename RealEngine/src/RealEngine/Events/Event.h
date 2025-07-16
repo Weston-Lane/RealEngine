@@ -1,5 +1,11 @@
+#pragma once
 #include "pch.h"
 #include "RealEngine/PlatformMacros.h"
+
+/// <summary>
+/// This is a stopping event system so each event must be taken care of before the next one can continue, Eventually
+/// an event buffer will be needed to properly dispatch events as to not hold up execution
+/// </summary>
 namespace Real
 {
 	enum class EventType
@@ -57,7 +63,7 @@ namespace Real
 			:m_event(event) {}
 
 		//if function you are trying to dispatch matches the dispatch type. run that function
-		//compiler determines type of F ex call: dispatcher.Dispatch<WindowResizeEvent>(lamdaFunc)=====> lambdaFunc = [](WindowResizeEvent& e){}
+		//compiler determines type of F ex call: dispatcher.Dispatch<WindowResizeEvent>(lamdaFunc)=====> lambdaFunc = [&](WindowResizeEvent& e){}
 		template<typename T, typename F>
 		bool Dispatch(const F& func)
 		{

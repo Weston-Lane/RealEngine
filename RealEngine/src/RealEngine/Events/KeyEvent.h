@@ -5,12 +5,15 @@ namespace Real
 	class REAL_EXPORT KeyEvent : public Event
 	{
 	public:
+		static enum State
+		{
+			Pressed, Held
+		};
 		int GetKeyCode() const { return m_keyCode; }
 		virtual int GetCategoryFlags() const override { return EventCategoryKeyboard | EventCategoryInput; } //KeyEvent is both a keyboard and input event
 	protected:
 		KeyEvent(int keycode) //constructor can only be called by child
 			: m_keyCode(keycode) {}
-
 		int m_keyCode;
 	private:
 	};
@@ -40,6 +43,7 @@ namespace Real
 
 	class REAL_EXPORT KeyReleasedEvent : public KeyEvent
 	{
+	public:
 		KeyReleasedEvent(int keycode)
 			:KeyEvent(keycode) {}
 		std::string ToString() const override

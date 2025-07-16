@@ -39,6 +39,7 @@ target_compile_definitions(
     RealEngine 
         PUBLIC 
             REAL_BUILD_DLL
+            REAL_ASSERTS
 )
 
 

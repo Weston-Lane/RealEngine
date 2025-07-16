@@ -1,7 +1,8 @@
 #pragma once
-
 #include "Event.h"
-
+/// <summary>
+/// implements all application and window events
+/// </summary>
 namespace Real
 {
 	class REAL_EXPORT WindowResizeEvent : public Event
@@ -39,6 +40,31 @@ namespace Real
 
 		virtual int GetCategoryFlags() const override { return EventCategoryApplication; }
 	private:
+	};
+
+	class REAL_EXPORT WindowMoveEvent : public Event
+	{
+	public:
+		WindowMoveEvent(int xpos, int ypos)
+			:m_xPos(xpos), m_yPos(ypos) {}
+
+		inline int GetXPos() { return m_xPos; }
+		inline int GetYPos() { return m_yPos; }
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "Window Move Event: [Top Left Corner Pos: [" << m_xPos << ", " << m_yPos <<"] ]";
+			return ss.str();
+		}
+
+		static EventType GetStaticEventType() { return EventType::WindowMoved; }
+		virtual EventType GetEventType() const { return GetStaticEventType(); }
+		virtual const char* GetName() const { return "Window Moved"; }
+
+		virtual int GetCategoryFlags() const override { return EventCategoryApplication; }
+	private:
+		int m_xPos, m_yPos;
 	};
 
 	//may use later

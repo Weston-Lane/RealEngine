@@ -6,6 +6,18 @@
 * and Trace calls won't be compiled with the program 
 * 
 * Call with RL_<levelname> ex: RL_DEBUG("[{},{}]", vec2.x,vec2.y) */
+//RL_CORE_FATAL(" {}",1);
+//RL_FATAL(" {}", 1);
+//RL_CORE_ERROR(" {}", 1);
+//RL_ERROR(" {}", 1);
+//RL_CORE_WARN(" {}", 1);
+//RL_WARN(" {}", 1);
+//RL_CORE_INFO(" {}", 1);
+//RL_INFO(" {}", 1);
+//RL_CORE_DEBUG(" {}", 1);
+//RL_DEBUG(" {}", 1);
+//RL_CORE_TRACE(" {}", 1);
+//RL_TRACE(" {}", 2);
 
 #define LOG_WARN_ENABLED 1
 #define LOG_INFO_ENABLED 1

@@ -9,3 +9,11 @@
 #else
 	#error Currently only supports windows
 #endif
+
+#ifdef REAL_ASSERTS
+	#define REAL_CORE_ASSERT(x,...) { if(!(x)){ RL_CORE_ERROR("Assertion Failed {}",__VA_ARGS__); __debugbreak(); } }
+	#define REAL_ASSERT(x,...)      { if(!(x)){ RL_ERROR("Assertion Failed {}",__VA_ARGS__); __debugbreak(); } }
+#else
+#define REAL_CORE_ASSERT(x,...)
+#define REAL_ASSERT(x,...)     
+#endif
