@@ -17,11 +17,12 @@ namespace Real
 		virtual void SetEventCallBack(const EventCallbackFunc&) override;
 		virtual void SetVsync(bool set) override;
 		virtual bool IsVsyncOn() const override;
+		GLFWwindow* m_window;
 	private:
 		void Init(const WindowProps& props);
 		void ShutDown();
 
-		GLFWwindow* m_window;
+		
 		struct WindowData
 		{
 			std::string title;

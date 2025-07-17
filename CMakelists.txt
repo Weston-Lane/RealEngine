@@ -23,3 +23,13 @@ if(WIN32)
                 REAL_PLATFORM_WINDOWS
     )
 endif()
+
+#ImGui debugger helpers
+if(MSVC)
+    target_sources(
+        RealEngine 
+            PRIVATE
+                ${CMAKE_SOURCE_DIR}/RealEngine/vendor/IMGUI/misc/debuggers/imgui.natvis
+                ${CMAKE_SOURCE_DIR}/RealEngine/vendor/IMGUI/misc/debuggers/imgui.natstepfilter
+    )
+endif()

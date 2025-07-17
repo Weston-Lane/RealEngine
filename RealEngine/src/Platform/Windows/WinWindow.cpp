@@ -1,8 +1,12 @@
+#include <glad/glad.h>
 #include "WinWindow.h"
 #include "RealEngine/Logger.h"
 #include "RealEngine/Events/ApplicationEvent.h"
 #include "RealEngine/Events/KeyEvent.h"
 #include "RealEngine/Events/MouseEvent.h"
+
+#include "backends/imgui_impl_opengl3.h"
+#include "backends/imgui_impl_glfw.h"
 /// <summary>
 /// GLFW and WinWindow initialization
 /// Later iterations will use winAPI
@@ -35,6 +39,7 @@ namespace Real
 		m_data.width = props.m_width;
 		m_data.height = props.m_height;
 
+		/////////////////Init Glfw////////////////////////////////////
 		if(!glfwIsInit)
 		{
 			bool success = glfwInit();
@@ -43,10 +48,14 @@ namespace Real
 			glfwSetErrorCallback(glfwErrorCallback);
 		}
 		else 
-			{ RL_CORE_INFO(" glfw already initialized....") }
+			{ RL_CORE_INFO(" glfw already initialized...."); }
 
 		m_window = glfwCreateWindow((int)m_data.width, (int)m_data.height, m_data.title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_window);
+		/////////////////Init Glad////////////////////////////////////
+		int success = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		REAL_CORE_ASSERT(success, "glad could not load OpenGL function pointers!");
+		/////////////////Init Glad////////////////////////////////////
 		glfwSetWindowUserPointer(m_window, &m_data);
 		SetVsync(true);
 
@@ -133,6 +142,7 @@ namespace Real
 			WindowMoveEvent event(xpos, ypos);
 			data.EventCallback(event);
 		});
+
 	}
 	void WinWindow::ShutDown()
 	{

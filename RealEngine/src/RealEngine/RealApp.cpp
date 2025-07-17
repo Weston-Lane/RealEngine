@@ -2,6 +2,10 @@
 #include "RealApp.h"
 #include "Logger.h"
 
+
+#include "backends/imgui_impl_glfw.h"
+#include "backends/imgui_impl_opengl3.h"
+
 /// <summary>
 /// Layer updates happen here
 /// </summary>
@@ -20,6 +24,7 @@ namespace Real
 	}
 	void RealApp::Run()
 	{
+
 		while (m_isRunning)
 		{
 			//UPDATES
