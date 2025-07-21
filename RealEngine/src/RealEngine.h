@@ -16,6 +16,7 @@
 #include "RealEngine/Events/KeyEvent.h"
 #include "RealEngine/Events/MouseEvent.h"
 #include "RealEngine/LayerStack.h"
+#include "RealEngine/WindowInput.h"
 //------------EntryPoint------------//
 #include "RealEngine/EntryPoint.h"
 //---------------------------------//

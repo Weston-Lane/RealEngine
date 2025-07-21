@@ -38,7 +38,7 @@ namespace Real
 
         //ImGui::GetPlatformIO().Platform_SetClipboardTextFn =
         m_io->SetClipboardTextFn = 
-            [](ImGuiContext* user_data, const char* text)
+            [](void* user_data, const char* text)
             {
                 RL_DEBUG("set clipboard")
                 if(text)
