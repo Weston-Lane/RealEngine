@@ -30,6 +30,8 @@ namespace Real
 		virtual void SetEventCallBack(const EventCallbackFunc&) = 0;
 		virtual void SetVsync(bool set) = 0;
 		virtual bool IsVsyncOn() const = 0;
+
+		virtual void* GetNativeWindow() const = 0;
 		
 		static std::unique_ptr<Window> Create(WindowProps props = WindowProps());
 	};

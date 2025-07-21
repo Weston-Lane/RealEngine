@@ -15,17 +15,6 @@ public:
 	}
 	void OnEvent(Real::Event& event) override
 	{
-		if(event.GetEventType() == Real::EventType::MouseMoved)
-		{
-			
-		}
-		else if (event.GetEventType() == Real::EventType::KeyPressed)
-		{
-			RL_TRACE("{}", event.ToString());
-			Real::KeyPressedEvent e = static_cast<Real::KeyPressedEvent&>(event);
-			if (e.GetKeyCode() == 87) { posY += velocity; }
-			RL_DEBUG("{},{}", posX, posY);
-		}
 		
 	}
 };
@@ -35,7 +24,10 @@ class GameEntry : public Real::RealApp
 public:
 	GameEntry()
 	{
+		
 		RealApp::PushLayer(new GameLayer());
+		RealApp::PushOverlayLayer(new Real::ImGuiLayer());
+		
 	}
 	~GameEntry()
 	{

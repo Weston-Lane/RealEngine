@@ -87,20 +87,21 @@ namespace Real
 				{
 					case GLFW_PRESS:
 					{
-						KeyPressedEvent event(key, KeyEvent::State::Pressed);
+						KeyPressedEvent event(key, KeyEvent::State::Pressed,mods);
 						data.EventCallback(event);
 					}break;
 					case GLFW_RELEASE:
 					{
-						KeyReleasedEvent event(key);
+						KeyReleasedEvent event(key,mods);
 						data.EventCallback(event);
 					}break;
 					case GLFW_REPEAT:
 					{
-						KeyPressedEvent event(key, KeyEvent::State::Held);//WINAPI can give a repeat count GLFW does not so set to 1
+						KeyPressedEvent event(key, KeyEvent::State::Held, mods);//WINAPI can give a repeat count GLFW does not so set to 1
 						data.EventCallback(event);
 					}break;
 				}
+				RL_DEBUG("Key {0} Action {1}\n", key, action);
 		});
 		glfwSetMouseButtonCallback(m_window,
 		[](GLFWwindow* window, int button, int action, int mods)
@@ -142,6 +143,13 @@ namespace Real
 			WindowMoveEvent event(xpos, ypos);
 			data.EventCallback(event);
 		});
+		glfwSetCharCallback(m_window,
+		[](GLFWwindow* window, unsigned int unicodeChar)
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			KeyTypedEvent event(unicodeChar);
+			data.EventCallback(event);
+		});
 
 	}
 	void WinWindow::ShutDown()
@@ -150,11 +158,8 @@ namespace Real
 	}
 	void WinWindow::OnUpdate()
 	{
-		glClearColor(1, 1, 1, 1);
-		glClear(GL_COLOR_BUFFER_BIT);
 		glfwPollEvents();
-		glfwSwapBuffers(m_window);
-		
+		glfwSwapBuffers(m_window);		
 	}
 	void WinWindow::SetEventCallBack(const EventCallbackFunc& eventFunc)
 	{

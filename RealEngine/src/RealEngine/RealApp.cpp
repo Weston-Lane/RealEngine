@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "RealApp.h"
 #include "Logger.h"
-
+#include "GLFW/glfw3.h"
 
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
@@ -11,9 +11,16 @@
 /// </summary>
 namespace Real
 {
-#define EVENT_FUNC_BIND(func,type) [&](Event& event) { return func(static_cast<type&>(event)); }//std::bind(&RealApp::OnEvent, this, std::placeholders::_1);
+	#define EVENT_FUNC_BIND(func,type) [&](Event& event) { return func(static_cast<type&>(event)); }//std::bind(&RealApp::OnEvent, this, std::placeholders::_1);
+
+	REAL_EXPORT RealApp* RealApp::s_Instance = nullptr;
+
 	RealApp::RealApp()
 	{
+		//application singleton
+		REAL_ASSERT(s_Instance==nullptr, "RealApp Singleton alredy Created!");
+		s_Instance = this;
+
 		m_window = Window::Create();
 		std::function<void(Event&)> callback = [&](Event& event) { return OnEvent(event); }; 
 		m_window->SetEventCallBack(callback);
@@ -28,9 +35,12 @@ namespace Real
 		while (m_isRunning)
 		{
 			//UPDATES
-			m_window->OnUpdate();
+			glClearColor(1, 1, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
 			for (Layer* layer : m_layerStack.GetLayerStack())
 				{ layer->OnUpdate(); }
+
+			m_window->OnUpdate();
 		}
 	}
 	void RealApp::OnEvent(Event& event)
@@ -62,7 +72,7 @@ namespace Real
 	}
 	void RealApp::PushOverlayLayer(Layer* layer)
 	{
-		m_layerStack.PopOverlayLayer(layer);
+		m_layerStack.PushOverlayLayer(layer);
 	}
 	void RealApp::PopOverlayLayer(Layer* layer)
 	{

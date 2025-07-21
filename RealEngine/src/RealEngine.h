@@ -9,6 +9,7 @@
 #include "RealEngine/Logger.h"
 #include "RealEngine/Core.h"
 #include "RealEngine/RealApp.h"
+#include "RealEngine/ImGui/ImGuiLayer.h"
 //---------Engine Events-------------//
 #include "RealEngine/Events/Event.h"
 #include "RealEngine/Events/ApplicationEvent.h"

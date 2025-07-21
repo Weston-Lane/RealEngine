@@ -21,6 +21,7 @@ target_include_directories(
             ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLFW/include
             ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLAD/include
             ${CMAKE_CURRENT_SOURCE_DIR}/vendor/IMGUI
+            ${CMAKE_CURRENT_SOURCE_DIR}/vendor/IMGUI/backends
 )
 #include all needed std header files for engine PCH compilation
 if(WIN32)
@@ -37,9 +38,10 @@ endif()
 
 target_compile_definitions(
     RealEngine 
-        PUBLIC 
+        PRIVATE 
             REAL_BUILD_DLL
             REAL_ASSERTS
+            
 )
 
 
