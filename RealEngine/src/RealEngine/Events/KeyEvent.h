@@ -78,7 +78,7 @@ namespace Real
 			return ss.str();
 		}
 
-		static EventType GetStaticEventType() { return EventType::KeyPressed; }
+		static EventType GetStaticEventType() { return EventType::KeyTyped; }
 		virtual EventType GetEventType() const override { return GetStaticEventType(); }
 		virtual const char* GetName() const override { return "Key Typed"; }
 	private:

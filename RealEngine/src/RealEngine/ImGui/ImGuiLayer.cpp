@@ -115,7 +115,7 @@ namespace Real
 			{ 
 				int key = e.GetKeyCode();
 				ImGuiKey imKey = ImGui_ImplGlfw_KeyToImGuiKey(key, 0);
-                if (imKey == ImGuiKey_None) { RL_DEBUG("not an IMGUI key"); return false; }
+                //if (imKey == ImGuiKey_None) { RL_CORE_WARN("not an IMGUI key"); return false; }
 
 				m_io->AddKeyEvent(imKey, true);
 
@@ -125,7 +125,7 @@ namespace Real
                 m_io->KeyAlt = (mods & GLFW_MOD_ALT) != 0;
                 m_io->KeySuper = (mods & GLFW_MOD_SUPER) != 0;
                 
-  /*              if (m_io->KeyCtrl)
+                /*if (m_io->KeyCtrl)
                 {
                     if (imKey == ImGuiKey_C) { ImGui::SetClipboardText(m_io->GetClipboardTextFn(m_io->ClipboardUserData)); }
                     else if (imKey == ImGuiKey_V)

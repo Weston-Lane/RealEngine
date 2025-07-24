@@ -17,6 +17,10 @@
 #include "RealEngine/Events/MouseEvent.h"
 #include "RealEngine/LayerStack.h"
 #include "RealEngine/WindowInput.h"
+//------------InputCodes------------//
+#include "RealEngine/InputCodes/KeyCodes.h"
+#include "RealEngine/InputCodes/MouseCodes.h"
+#include "RealEngine/InputCodes/GamePadCodes.h"
 //------------EntryPoint------------//
 #include "RealEngine/EntryPoint.h"
 //---------------------------------//

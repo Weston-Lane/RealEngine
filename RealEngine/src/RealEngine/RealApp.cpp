@@ -3,8 +3,9 @@
 #include "Logger.h"
 #include "GLFW/glfw3.h"
 #include "RealEngine/WindowInput.h"
-#include "backends/imgui_impl_glfw.h"
-#include "backends/imgui_impl_opengl3.h"
+//#include "backends/imgui_impl_glfw.h"
+//#include "backends/imgui_impl_opengl3.h"
+
 
 /// <summary>
 /// Layer updates happen here
@@ -48,13 +49,15 @@ namespace Real
 		EventDispatcher dispatcher(event);
 		dispatcher.Dispatch<WindowCloseEvent>(EVENT_FUNC_BIND(OnWindowClose,WindowCloseEvent));
 
-		//PROPOGATING EVENTS INTO THE EVENT LAYERS
+		//PROPOGATING EVENTS INTO THE LAYERS
 		for (auto it = m_layerStack.End() - 1; it != m_layerStack.Begin()-1; --it)//must use -1 at pointers to ensure visitation of all layers
 		{
 			(*it)->OnEvent(event);
 			if(event.m_eventHandled)
 				{ break; }
 		}
+
+
 	}
 	bool RealApp::OnWindowClose(WindowCloseEvent& e)
 	{

@@ -1,5 +1,4 @@
 #include <RealEngine.h>
-#include "GLFW/glfw3.h"
 
 class GameLayer : public Real::Layer
 {
@@ -11,11 +10,11 @@ public:
 
 	void OnUpdate() override
 	{
-		
+
 	}
 	void OnEvent(Real::Event& event) override
 	{
-		
+
 	}
 };
 //inherits from RealApp for engine functions 

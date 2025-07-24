@@ -101,7 +101,7 @@ namespace Real
 						data.EventCallback(event);
 					}break;
 				}
-				RL_DEBUG("Key {0} Action {1}\n", key, action);
+				
 		});
 		glfwSetMouseButtonCallback(m_window,
 		[](GLFWwindow* window, int button, int action, int mods)
@@ -149,6 +149,7 @@ namespace Real
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			KeyTypedEvent event(unicodeChar);
 			data.EventCallback(event);
+			
 		});
 
 	}

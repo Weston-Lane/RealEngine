@@ -12,6 +12,7 @@ namespace Real
         auto window = RealApp::Get().GetWindowPtr().GetNativeWindow();
         auto state = glfwGetKey((GLFWwindow*)window, keycode);
         return (state == GLFW_PRESS || state == GLFW_REPEAT);
+        
     }
     bool WindowsInput::IsMouseButtonPressedImpl(int keycode)
     {
