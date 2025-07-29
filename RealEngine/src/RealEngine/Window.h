@@ -25,6 +25,7 @@ namespace Real
 		virtual ~Window() = default;
 
 		virtual void OnUpdate() = 0;
+		virtual void ClearScreen() = 0;
 		virtual uint32_t GetWidth() const = 0;
 		virtual uint32_t GetHeight() const = 0;
 		virtual void SetEventCallBack(const EventCallbackFunc&) = 0;

@@ -12,6 +12,7 @@ namespace Real
 		~WinWindow();
 		
 		virtual void OnUpdate() override;
+		virtual void ClearScreen() override;
 		inline virtual uint32_t GetWidth() const override { return m_data.width; }
 		inline virtual uint32_t GetHeight() const override { return m_data.height; };
 		virtual void SetEventCallBack(const EventCallbackFunc&) override;

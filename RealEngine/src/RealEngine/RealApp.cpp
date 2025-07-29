@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "RealApp.h"
 #include "Logger.h"
-#include "GLFW/glfw3.h"
 #include "RealEngine/WindowInput.h"
 //#include "backends/imgui_impl_glfw.h"
 //#include "backends/imgui_impl_opengl3.h"
@@ -36,8 +35,8 @@ namespace Real
 		while (m_isRunning)
 		{
 			//UPDATES
-			glClearColor(1, 1, 1, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			m_window->ClearScreen();// needs to clear screen before update an buffer swap
+
 			for (Layer* layer : m_layerStack.GetLayerStack())
 				{ layer->OnUpdate(); }
 

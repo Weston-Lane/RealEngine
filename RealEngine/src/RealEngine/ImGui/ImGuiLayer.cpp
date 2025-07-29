@@ -69,6 +69,8 @@ namespace Real
 
         m_io->DeltaTime = deltaTime > 0.0f ? deltaTime : (1.0f / 60.0f);
 
+
+
         ImGui_ImplOpenGL3_NewFrame();
         //ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
